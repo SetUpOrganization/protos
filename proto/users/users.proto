@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/SetUpOrganization/protos/users";
+
+service Users {
+    rpc SignUp (SignUpRequest) returns (SignUpResponse);
+    rpc CheckCode (CheckCodeRequest) returns (CheckCodeResponse);
+    rpc SignIn (SignInRequest) returns (SignInResponse);
+    rpc SignOut (SignOutRequest) returns (SignOutResponse);
+    rpc UpdateUserInfo (UpdateUserInfoRequest) returns (UpdateUserInfoResponse);
+    rpc ChangePasswordNe (ChangePasswordNewRequest) returns (ChangePasswordNewResponse);
+    rpc CheckChangePasswordCode (CheckChangePasswordCodeRequest) returns (CheckChangePasswordCodeResponse);
+    rpc ChangePassworFinal (ChangePassworFinalRequest) returns (ChangePassworFinalResponse);
+    rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+}
+
+// Структура
+message User {
+    string id = 1;
+    string name = 2;
+    string surname = 3;
+    string description = 4;
+    string phonenumber = 5;
+    string country = 6;
+}
+
+// SigUp
+message SignUpRequest {
+    string mail = 1;
+    string password = 2;
+    string name = 3;
+    string admin_code = 4; // типо код для входа админа, я честно не знаю, стоит ли добовлять отдельный метод для реги админа
+}
+
+message SignUpResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+// Проверка кода при реге
+message CheckCodeRequest {
+    string jwt_token = 1;
+    string code = 2;
+}
+
+message CheckCodeResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+// SignIn
+message SignInRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message SignInResponse {
+    bool success = 1;
+    string message = 2;
+    string jwt_token = 3;
+}
+
+
+// SignOut
+message SignOutRequest {
+    string jwt_token = 1;
+}
+
+message SignOutResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+// Обновленеи инфы о юзере
+message UpdateUserInfoRequest {
+    string jwt_token = 6;
+    string name = 1;
+    string surname = 2;
+    string description = 3;
+    string phonenumber = 4;
+    string country = 5;
+}
+
+message UpdateUserInfoResponse {
+    bool success = 1;
+    string message = 2;
+    User user = 3;
+}
+
+
+// Сброс пароля 
+message ChangePasswordNewRequest {
+    string email = 1;
+}
+
+message ChangePasswordNewResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CheckChangePasswordCodeRequest {
+    string code = 1;
+    string email = 2;
+}
+
+message CheckChangePasswordCodeResponse {
+    bool success = 1;
+    string message = 2;
+    string jwt_token = 3; //jwt token будет иметь роль ключа, чтобы бэк был уверен, что именно этот юезр ввел код с почты
+} 
+
+message ChangePassworFinalRequest {
+    string password = 1;
+    string jwt_token = 2;
+}
+
+message ChangePassworFinalResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+// Смена пароля
+message ChangePasswordRequest {
+    string new_passowrd = 1;
+    string old_password = 2;
+    string jwt_token = 3;
+} 
+
+message ChangePasswordResponse {
+    bool success = 1;
+    string message = 2;
+}

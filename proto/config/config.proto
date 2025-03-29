@@ -62,8 +62,10 @@ message ParseReq {
 }
 
 message ParseRes {
-    string price = 1;
-    string title = 2;
+    bool success = 1;
+    string message = 2;
+    string price = 3;
+    string title = 4;
 }
 
 message CreateConfigReq {
@@ -71,7 +73,9 @@ message CreateConfigReq {
 }
 
 message CreateConfigRes {
-    string id = 1;
+    bool success = 1;
+    string message = 2;
+    string id = 3;
 }
 
 message UpdateConfigReq {
@@ -80,8 +84,10 @@ message UpdateConfigReq {
 }
 
 message UpdateConfigRes {
-    string id = 1;
-    ConfigMsg config = 2;
+    bool success = 1;
+    string message = 2;
+    string id = 3;
+    ConfigMsg config = 4;
 }
 
 message DeleteConfigReq {
@@ -89,7 +95,9 @@ message DeleteConfigReq {
 }
 
 message DeleteConfigRes {
-    string id = 1;
+    bool success = 1;
+    string message = 2;
+    string id = 3;
 }
 
 message GetConfigReq {
@@ -97,7 +105,9 @@ message GetConfigReq {
 }
 
 message GetConfigRes {
-    ConfigMsgFull config = 1;
+    bool success = 1;
+    string message = 2;
+    ConfigMsgFull config = 3;
 }
 
 message GetConfigsBuUserReq {
@@ -105,5 +115,7 @@ message GetConfigsBuUserReq {
 }
 
 message GetConfigsBuUserRes {
-    repeated ConfigMsgFull configs = 1;
+    bool success = 1;
+    string message = 2;
+    repeated ConfigMsgFull configs = 3;
 }
