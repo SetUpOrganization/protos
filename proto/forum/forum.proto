@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package forum;
 
-option go_package = "github.com/SetUpOrganization/protos/forum";
+option go_package = "github.com/SetUpOrganization/protos/gen/forum";
 
 service Forum {
     rpc CreateComment (CreateCommentRequest) returns (CreateCommentResponse);
