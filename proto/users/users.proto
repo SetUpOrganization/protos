@@ -27,7 +27,7 @@ message User {
     string country = 6;
 }
 
-// SigUp
+// SignUp
 message SignUpRequest {
     string mail = 1;
     string password = 2;
@@ -77,7 +77,7 @@ message SignOutResponse {
 }
 
 
-// Обновленеи инфы о юзере
+// Обновление инфы о юзере
 message UpdateUserInfoRequest {
     string jwt_token = 6;
     string name = 1;
@@ -112,7 +112,7 @@ message CheckChangePasswordCodeRequest {
 message CheckChangePasswordCodeResponse {
     bool success = 1;
     string message = 2;
-    string jwt_token = 3; //jwt token будет иметь роль ключа, чтобы бэк был уверен, что именно этот юезр ввел код с почты
+    string jwt_token = 3; // jwt token будет иметь роль ключа, чтобы бэк был уверен, что именно этот юзер ввел код с почты
 } 
 
 message ChangePassworFinalRequest {
