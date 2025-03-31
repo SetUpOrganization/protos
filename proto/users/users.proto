@@ -14,7 +14,7 @@ service Users {
     rpc CheckChangePasswordCode (CheckChangePasswordCodeRequest) returns (CheckChangePasswordCodeResponse);
     rpc ChangePassworFinal (ChangePassworFinalRequest) returns (ChangePassworFinalResponse);
     rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
-    rpc GetUserAvatar (GetUsersAvatarRequset) returns (GetUsersAvatarResponse);
+    rpc GetUserAvatar (GetUsersAvatarRequest) returns (GetUsersAvatarResponse);
 }
 
 // Структура
@@ -138,7 +138,7 @@ message ChangePasswordResponse {
     string message = 2;
 }
 
-message GetUsersAvatarRequset {
+message GetUsersAvatarRequest {
     string id = 1;
 }
 
