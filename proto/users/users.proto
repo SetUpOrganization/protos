@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package users;
 
-option go_package = "github.com/SetUpOrganization/protos/gen/users";
+option go_package = "github.com/SetUpOrganization/protos/gen/go/users";
 
 service Users {
     rpc SignUp (SignUpRequest) returns (SignUpResponse);

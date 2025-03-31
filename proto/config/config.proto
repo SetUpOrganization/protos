@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package config;
 
-option go_package = "github.com/SetUpOrganization/protos/gen/config";
+option go_package = "github.com/SetUpOrganization/protos/gen/go/config";
 
 service Config {
     rpc Parse (ParseReq) returns (ParseRes);
