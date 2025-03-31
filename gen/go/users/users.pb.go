@@ -21,7 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Структура
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -112,7 +111,7 @@ type SignUpRequest struct {
 	Mail          string                 `protobuf:"bytes,1,opt,name=mail,proto3" json:"mail,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	AdminCode     string                 `protobuf:"bytes,4,opt,name=admin_code,json=adminCode,proto3" json:"admin_code,omitempty"` // типо код для входа админа, я честно не знаю, стоит ли добовлять отдельный метод для реги админа
+	AdminCode     string                 `protobuf:"bytes,4,opt,name=admin_code,json=adminCode,proto3" json:"admin_code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -227,7 +226,7 @@ func (x *SignUpResponse) GetMessage() string {
 	return ""
 }
 
-// Проверка кода при реге
+// Check code in registration
 type CheckCodeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
@@ -542,7 +541,6 @@ func (x *SignOutResponse) GetMessage() string {
 	return ""
 }
 
-// Обновление инфы о юзере
 type UpdateUserInfoRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JwtToken      string                 `protobuf:"bytes,6,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
@@ -687,7 +685,7 @@ func (x *UpdateUserInfoResponse) GetUser() *User {
 	return nil
 }
 
-// Сброс пароля
+// Password reset
 type ChangePasswordNewRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -840,7 +838,7 @@ type CheckChangePasswordCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	JwtToken      string                 `protobuf:"bytes,3,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"` // jwt token будет иметь роль ключа, чтобы бэк был уверен, что именно этот юзер ввел код с почты
+	JwtToken      string                 `protobuf:"bytes,3,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"` // jwt token will have the role of a key, so that the back will be sure that this is the user who entered the code from the mail.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
